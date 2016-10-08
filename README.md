@@ -1,3 +1,3 @@
 # Ocupado-Server
 
-Bathroom availability tracker. Built at Mhacks 8.
+Bathroom availability tracker. Built at MHacks 8.
