@@ -122,6 +122,7 @@
     </Compile>
     <Compile Include="Models\Bathroom.cs" />
     <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\Stall.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

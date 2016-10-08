@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Ocupado_WebServer.Models;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Ocupado_WebServer.Models;
 
 namespace Ocupado_WebServer.Controllers
 {
@@ -14,8 +15,14 @@ namespace Ocupado_WebServer.Controllers
 
         public IEnumerable<Bathroom> GetBathrooms()
         {
-            bathrooms.Add(new Bathroom { occupied = true, location = new Location { floor = 1 } });
+            
             return bathrooms;
+        }
+
+        public Stall PutStallStatus(Stall status)
+        {
+
+            return status;
         }
     }
 }
