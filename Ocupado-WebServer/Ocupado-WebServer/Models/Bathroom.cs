@@ -7,7 +7,7 @@ namespace Ocupado_WebServer.Models
 {
     public class Bathroom
     {
-        bool occupied;
-        Location location;
+        public bool occupied;
+        public Location location;
     }
 }
