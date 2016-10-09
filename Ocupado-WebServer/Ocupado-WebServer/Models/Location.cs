@@ -7,8 +7,8 @@ using System.Web;
 
 namespace Ocupado_WebServer.Models {
     public class Location {
-        public decimal latitude { get; set; }
-        public decimal longitude { get; set; }
+        public double latitude { get; set; }
+        public double longitude { get; set; }
         public string address { get; set; }
         public string city { get; set; }
         public string state { get; set; }

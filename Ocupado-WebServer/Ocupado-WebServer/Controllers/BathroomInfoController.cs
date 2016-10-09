@@ -7,14 +7,20 @@ using System.Net.Http;
 using System.Web.Http;
 
 namespace Ocupado_WebServer.Controllers {
+    [RoutePrefix("api/BathroomInfo")]
     public class BathroomInfoController : ApiController {
         public static List<Bathroom> bathrooms = Bathroom.LoadAll();
 
-        public IEnumerable<Bathroom> GetBathroom() {
+        [HttpGet]
+        [Route("Bathrooms")]
+        public IEnumerable<Bathroom> GetAllBathrooms() {
+            //bathrooms = Bathroom.LoadAll();
             return bathrooms;
         }
 
-        public Bathroom GetBathroom(int id) {
+        [HttpGet]
+        [Route("Bathrooms")]
+        public Bathroom GetBathroomsById(int id) {
             return bathrooms.FirstOrDefault(x => x.id == id);
         }
     }
