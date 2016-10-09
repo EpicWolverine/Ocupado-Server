@@ -44,5 +44,18 @@ namespace Ocupado_WebServer.Models {
             }
             return true;
         }
+
+        public static bool UpdateStatus(Stall update) {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["defaultConnection"].ConnectionString)) {
+                con.Open();
+                //get bathroom data, list of stalls
+                SqlCommand stallCmd = new SqlCommand("UPDATE Stalls SET Occupied = @Occupied, AttentionNeeded = @AttentionNeeded WHERE Id = @Id", con);
+                stallCmd.Parameters.Add("@Id", SqlDbType.Int).SqlValue = update.id;
+                stallCmd.Parameters.Add("@Occupied", SqlDbType.Bit).SqlValue = update.occupied;
+                stallCmd.Parameters.Add("@AttentionNeeded", SqlDbType.Bit).SqlValue = update.attentionNeeded;
+                stallCmd.ExecuteNonQuery();
+            }
+            return true;
+        }
     }
 }
