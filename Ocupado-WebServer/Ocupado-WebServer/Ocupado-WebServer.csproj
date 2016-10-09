@@ -110,8 +110,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="index.html" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="css\stylesheet.css" />
+    <Content Include="scripts\app.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

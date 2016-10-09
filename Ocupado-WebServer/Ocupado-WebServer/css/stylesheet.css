@@ -1,0 +1,38 @@
+body {
+	margin: 0 auto;
+	text-align: center;
+}
+#wrapper {
+	font-family: Helvetica, Arial, sans-serif;
+    margin: 0 10% 0 10%;
+}
+#header {
+	color: #f22b2b;
+	font-size: 36px;
+}
+#footer {
+	color: #ce1c1c;
+	font-size: 12px;
+	margin-bottom: 5px;
+}
+#footer a {
+    color: #ce1c1c;
+}
+hr {
+	color: #DDDDDD;
+	background-color: #DDDDDD;
+	width: 75%;
+	border: solid 1px;
+}
+#subHeader {
+	color: #ce1c1c;
+	font-size: 16px;
+	margin-bottom: 5px;
+}
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid grey;
+}
