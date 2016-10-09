@@ -6,36 +6,29 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace Ocupado_WebServer.Models
-{
-    public class Bathroom
-    {
+namespace Ocupado_WebServer.Models {
+    public class Bathroom {
         public int id { get; private set; }
         public Location location { get; private set; }
         public List<Stall> stalls { get; private set; }
         public int numberWaiting { get; private set; }
 
-        public Bathroom()
-        {
+        public Bathroom() {
             id = 0;
             location = new Location();
             stalls = new List<Stall>();
             numberWaiting = 0;
         }
 
-        public bool LoadData(int bathroomId)
-        {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["defaultConnection"].ConnectionString))
-            {
+        public bool LoadData(int bathroomId) {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["defaultConnection"].ConnectionString)) {
                 con.Open();
                 //get bathroom data, list of stalls
                 SqlCommand bathroomCmd = new SqlCommand("SELECT [Id], [NumberWaiting], [GPS].Lat, [GPS].Long, [Address], [City], [State], [Floor], [Notes] FROM Bathrooms WHERE [Id] = @Id", con);
                 bathroomCmd.Parameters.Add("@Id", SqlDbType.Int).SqlValue = bathroomId;
                 SqlDataReader bathroomReader = bathroomCmd.ExecuteReader();
-                if (bathroomReader.HasRows)
-                {
-                    while (bathroomReader.Read())
-                    {
+                if (bathroomReader.HasRows) {
+                    while (bathroomReader.Read()) {
                         id = bathroomReader.GetInt32(0);
                         numberWaiting = bathroomReader.GetInt32(1);
                         location.latitude = bathroomReader.GetDecimal(2);
@@ -47,8 +40,7 @@ namespace Ocupado_WebServer.Models
                         location.notes = bathroomReader.GetString(8);
                     }
                 }
-                else
-                {
+                else {
                     return false; //No rows found
                 }
                 bathroomReader.Close();
@@ -57,15 +49,12 @@ namespace Ocupado_WebServer.Models
                 SqlCommand stallsCmd = new SqlCommand("SELECT StallId FROM StallsInBathrooms WHERE BathroomId = @BathroomId", con);
                 bathroomCmd.Parameters.Add("@BathroomId", SqlDbType.Int).SqlValue = bathroomId;
                 SqlDataReader stallsReader = stallsCmd.ExecuteReader();
-                if (stallsReader.HasRows)
-                {
-                    while (stallsReader.Read())
-                    {
+                if (stallsReader.HasRows) {
+                    while (stallsReader.Read()) {
                         stalls.Add(new Stall(stallsReader.GetInt32(0)));
                     }
                 }
-                else
-                {
+                else {
                     return false; //No rows found
                 }
                 stallsReader.Close();
@@ -73,22 +62,18 @@ namespace Ocupado_WebServer.Models
                 return true;
             }
         }
-        
-        public static List<Bathroom> LoadAll() 
-        {
+
+        public static List<Bathroom> LoadAll() {
             List<Bathroom> bathrooms = new List<Bathroom>();
 
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["defaultConnection"].ConnectionString))
-            {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["defaultConnection"].ConnectionString)) {
                 con.Open();
 
                 //get bathroom data, list of stalls
                 SqlCommand bathroomCmd = new SqlCommand("SELECT [Id], [NumberWaiting], [GPS].Lat, [GPS].Long, [Address], [City], [State], [Floor], [Notes] FROM Bathrooms", con);
                 SqlDataReader bathroomReader = bathroomCmd.ExecuteReader();
-                if (bathroomReader.HasRows)
-                {
-                    while (bathroomReader.Read())
-                    {
+                if (bathroomReader.HasRows) {
+                    while (bathroomReader.Read()) {
                         Bathroom tempBathroom = new Bathroom();
                         tempBathroom.id = bathroomReader.GetInt32(0);
                         tempBathroom.numberWaiting = bathroomReader.GetInt32(1);

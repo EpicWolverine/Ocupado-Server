@@ -7,20 +7,16 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace Ocupado_WebServer.Controllers
-{
-    public class SensorUpdateController : ApiController
-    {
+namespace Ocupado_WebServer.Controllers {
+    public class SensorUpdateController : ApiController {
         List<Bathroom> bathrooms = new List<Bathroom>();
 
-        public IEnumerable<Bathroom> GetBathrooms()
-        {
-            
+        public IEnumerable<Bathroom> GetBathrooms() {
+
             return bathrooms;
         }
 
-        public Stall PutStallStatus(Stall status)
-        {
+        public Stall PutStallStatus(Stall status) {
 
             return status;
         }

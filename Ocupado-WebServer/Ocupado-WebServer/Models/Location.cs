@@ -5,10 +5,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace Ocupado_WebServer.Models
-{
-    public class Location
-    {
+namespace Ocupado_WebServer.Models {
+    public class Location {
         public decimal latitude { get; set; }
         public decimal longitude { get; set; }
         public string address { get; set; }
@@ -17,8 +15,7 @@ namespace Ocupado_WebServer.Models
         public int floor { get; set; }
         public string notes { get; set; }
 
-        public Location()
-        {
+        public Location() {
             latitude = 0;
             longitude = 0;
             address = "";
